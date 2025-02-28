@@ -107,14 +107,17 @@ export default function Home() {
                                 <Slide3 prods={data.prod} time={false} title="Beauty" />
                             </Grid>
                         </Grid>
-                        <marquee dir="right" className="p-2 py-4 mt-2 bg-primary text-white" ><h1>YouTube</h1></marquee>
+                                    
                         {
                             Array.from(new Array(10), (item, idx) => {
                                 return (
                                     <Slide1 key={idx} prods={data.prod} time={true} title="Beauty" />
                                 )
                             })
-                        }
+                        }    
+                        
+                                                        {/* YOUTUBE */}
+                        <marquee dir="right" className="p-2 py-4 mt-2 bg-primary text-white" ><h1>YouTube</h1></marquee>
                         <VideoSlide />
 
 
