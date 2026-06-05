@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { BrowserRouter, Routes, Route, useNavigate, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout1 from "./components/pages/partials/Layout1.jsx";
 import Home from "./components/pages/partials/Home";
 import "./components/css/common.css";
@@ -12,11 +11,10 @@ import { Cart } from "./components/pages/Cart/Cart";
 
 import FilterProduct from "./components/pages/FilterProduct/FilterProduct";
 
-
 import MyOrders from "./components/pages/MyProfile/MyOrders/MyOrders";
 import OrderDetails from "./components/pages/MyProfile/MyOrders/Order_details";
 import ManageAddress from "./components/pages/MyProfile/ManageAddress";
-import ProfileInfo from "./components/pages/MyProfile/Account/ProfileInfo.jsx"
+import ProfileInfo from "./components/pages/MyProfile/Account/ProfileInfo.jsx";
 import PanCard from "./components/pages/MyProfile/Account/PanCard.jsx";
 import VPADetails from "./components/pages/MyProfile/Payment/VPADetails.jsx";
 import SavedCards from "./components/pages/MyProfile/Payment/SavedCards.jsx";
@@ -33,7 +31,7 @@ import HelpCare from "./components/pages/More/HelpCare.jsx";
 import DownloadApp from "./components/pages/More/DownloadApp.jsx";
 import Terms from "./components/pages/MyProfile/Account/Terms.jsx";
 import { getCookie } from "./components/pages/auth/cookieAction.js";
-import Login_Register from "./components/pages/auth/Login_Register.jsx"
+import Login_Register from "./components/pages/auth/Login_Register.jsx";
 import VideoDetails from "./components/pages/YouTube/VideosDetails/VideoDetails.jsx";
 import YoutubeLayout from "./components/pages/YouTube/partials/YoutubeLayout.jsx";
 import ForgetPassword from "./components/pages/auth/ForgetPassword.jsx";
@@ -48,50 +46,89 @@ function App() {
   const email = getCookie("resetEmail");
 
   return (
-
     <Provider store={store}>
       <Box className="App">
         <BrowserRouter>
           <Routes>
-
             <Route path="/" element={<Layout2 />}>
               <Route path="login" element={<Login_Register />} />
               <Route path="register" element={<Login_Register />} />
             </Route>
             <Route path="/" element={<Layout1 />}>
               <Route index element={<Home />} />
-              <Route path="/forget-password" element={<><ForgetPassword /></>} />
-
+              <Route
+                path="/forget-password"
+                element={
+                  <>
+                    <ForgetPassword />
+                  </>
+                }
+              />
             </Route>
 
             {/* //Forget Password */}
 
-            <Route path="/" element={(email != "" && email != undefined && email != null) ? <Layout1 /> : <Navigate to="/forget-password" />}>
-
-              <Route path="/reset-password" element={<><ResetPassword /></>} />
+            <Route
+              path="/"
+              element={
+                email != "" && email != undefined && email != null ? (
+                  <Layout1 />
+                ) : (
+                  <Navigate to="/forget-password" />
+                )
+              }
+            >
+              <Route
+                path="/reset-password"
+                element={
+                  <>
+                    <ResetPassword />
+                  </>
+                }
+              />
             </Route>
             <Route path="/" element={<Layout2 />}>
               <Route path="the-gift-card-store" element={<GiftCardStore />} />
               <Route path="detail-view/:prod_id" element={<DetailView />} />
-              <Route path="filter-product/:prod_id" element={<FilterProduct />} />
+              <Route
+                path="filter-product/:prod_id"
+                element={<FilterProduct />}
+              />
               <Route path="supercoins" element={<SuperCoins />} />
               <Route path="plus" element={<FlipkartZonePlus />} />
               <Route path="helpcentre" element={<HelpCare />} />
               <Route path="download-app" element={<DownloadApp />} />
-              <Route path="communication-preferences" element={<Notifi_Preffrence />} />
+              <Route
+                path="communication-preferences"
+                element={<Notifi_Preffrence />}
+              />
             </Route>
 
-
-
-            <Route path="/" element={(token != null && token != undefined) ? <YoutubeLayout /> : <Navigate to="/login" />}>
+            <Route
+              path="/"
+              element={
+                token != null && token != undefined ? (
+                  <YoutubeLayout />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            >
               <Route path="detail-video" element={<VideoDetails />} />
             </Route>
 
-
-
             {/* Account Handling Routes */}
 
-            <Route path="/account" element={(token != null && token != undefined) ? <Layout2 /> : <Navigate to="/login" />}>
+            <Route
+              path="/account"
+              element={
+                token != null && token != undefined ? (
+                  <Layout2 />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            >
               <Route path="" element={<MyProfileLayout />}>
                 <Route index element={<ProfileInfo />} />
                 <Route path="addresses" element={<ManageAddress />} />
@@ -109,17 +146,16 @@ function App() {
               <Route path="orders" element={<MyOrders />} />
               <Route path="terms" element={<Terms />} />
               <Route path="view-carts" element={<Cart />} />
-              <Route path="order_details/:order_id" element={<OrderDetails />} />
+              <Route
+                path="order_details/:order_id"
+                element={<OrderDetails />}
+              />
             </Route>
-
           </Routes>
         </BrowserRouter>
-
       </Box>
-    </Provider >
-
+    </Provider>
   );
 }
 
 export default App;
-

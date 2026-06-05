@@ -1,42 +1,17 @@
-
-
 import axios from "axios";
 import { url as urlPath } from "../partials/data";
 
 export default async function sendEmail(options) {
-
   try {
     let result = await axios({
       method: "post",
       url: `${urlPath}/send-email`,
-      data: { options }
-
-    })
-
-  }
-  catch (err) {
-    return ;
-
-
+      data: { options },
+    });
+  } catch (err) {
+    return;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // let nodemailer=require("nodemailer")
 // // const transporter = nodemailer.createTransport({

@@ -1,5 +1,4 @@
-
-var $easyzoom = $('.easyzoom').easyZoom();
+var $easyzoom = $(".easyzoom").easyZoom();
 
 // Get an instance API
-var api = $easyzoom.data('easyZoom');
+var api = $easyzoom.data("easyZoom");

@@ -1,4 +1,3 @@
-
 export const GET_PRODUCTS_SUCCESS = "get-prod-success";
 export const GET_PRODUCTS_FAILED = "get-prod-failed";
 export const GET_PRODUCT_DETAIL_SUCCESS = "getProductDetailSuccess";
@@ -18,4 +17,3 @@ export const GET_PRODUCTS_BY_ID_FAILED = "getProductsByIdFailed";
 export const USER_REGISTER = "userRegister";
 export const USER_LOGIN = "userLogin";
 export const GET_PRODUCT_BY_LIMIT = "getProductsByLimit";
-
