@@ -11,8 +11,8 @@ const sendEmail = async (req, res) => {
 
         
         const transporter = nodeMailer.createTransport({
-            host: process.env.SMPT_HOST,
-            port: process.env.SMPT_PORT,
+            host: process.env.SMTP_HOST,
+            port: process.env.SMTP_PORT,
             secure: false, // Use SSL
             auth: {
                 user: process.env.USER,
@@ -22,19 +22,20 @@ const sendEmail = async (req, res) => {
         });
 
         const mailOptions = {
-            from: process.env.SMPT_MAIL,
+            from: process.env.SMTP_MAIL,
             to: options.to,
             subject: options.subject,
             html: options.msg,
         };
 
         await transporter.sendMail(mailOptions);
+        
         res.send({ status: true, msg: "Please Check you email..." })
 
     }
     catch (err) {
-       
-        res.send({ status: false, msg: "Please Check you email..." })
+       console.log(err)
+        res.send({ status: false, msg: "Failed to send email" })
     }
 };
 export default sendEmail;

@@ -10,7 +10,7 @@ class ProductController {
             res.status(200).json({ prod });
         }
         catch (err) {
-            res.send(500).json({ "Server Error": err.message });
+            res.status(500).json({ "Server Error": err.message });
         }
     }
     static getProductsByLimit = async (req, res) => {

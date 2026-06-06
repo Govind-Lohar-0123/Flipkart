@@ -38,7 +38,7 @@ app.post("/send-email", sendEmail);
 
 //Server Listening
 app.listen(PORT, () => {
-
+   console.log("Server is running on PORT",PORT)
 })
 
 
