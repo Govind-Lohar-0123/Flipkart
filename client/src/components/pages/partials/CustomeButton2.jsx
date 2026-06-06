@@ -13,7 +13,7 @@ import {
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Badge from "@mui/material/Badge";
 import { Link as routerLink } from "react-router-dom";
-import { getCookie } from "../auth/cookieAction";
+import { getCookie, getUser } from "../auth/cookieAction";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -97,7 +97,7 @@ const Cart = styled(Typography)(({ theme }) => ({
   },
 }));
 
-let user = JSON.parse(getCookie("user"));
+let user = getUser("user");
 
 export default function CustomeButton2() {
   const dispatch = useDispatch();

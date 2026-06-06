@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addToCart } from "../../react_redux/redux/actions/cartAction";
 import v1 from "../../videos/v1.mp4";
-import { getCookie } from "../auth/cookieAction";
+import { getCookie, getToken } from "../auth/cookieAction";
 import { clientUrl } from "../partials/data";
 import Carousel from "./Carousel";
 // ---------------LEFT COMPONENT CSS------------
@@ -47,7 +47,7 @@ const BigImage = styled("Box")(({ theme }) => ({
   textAlign: "center",
 }));
 
-let token = getCookie("token");
+let token = getToken("token");
 
 export default function ActionItem({ url, prod }) {
   const [{ src, isImg }, setUrl] = useState({ src: url, isImg: true });

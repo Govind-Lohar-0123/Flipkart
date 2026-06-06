@@ -1,4 +1,5 @@
-export const url = "https://flipkart-server-9v9b.onrender.com";
+// export const url = "https://flipkart-server-9v9b.onrender.com";
+export const url = "http://localhost:8000";
 export const clientUrl = `${window.location.origin}`;
 
 const bannerImgs = [

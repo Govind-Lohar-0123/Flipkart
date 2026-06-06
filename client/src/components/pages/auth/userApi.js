@@ -3,6 +3,7 @@ import axios from "axios";
 import { clientUrl, url } from "../partials/data";
 import {
   getCookie,
+  getToken,
   setCookieForRememberMe,
   setToken,
   setUser,
@@ -18,8 +19,8 @@ export const userRegister = async (signData, setResult) => {
     });
 
     if (data.status == true) {
-      setToken(data.token, 4);
-      setUser(data.user, 4);
+      setToken(data.token);
+      setUser(data.user);
       window.location.href = clientUrl;
     } else {
       setResult({ type: true, msg: data.msg });
@@ -69,9 +70,12 @@ export const userLogin = async (loginData, setResult) => {
     });
 
     if (data.status == true) {
-      temp.token = data.token;
-      temp.user = data.user;
-      return true;
+      
+      setToken(data.token);
+      setUser(data.user);
+      window.location.href = clientUrl;
+      // return true;
+      
     } else {
       setResult({ type: true, msg: data.msg });
 
@@ -139,7 +143,7 @@ export async function changeUserPassword(user_data, setResult) {
   }
 
   try {
-    let token = getCookie("token");
+    let token = getToken("token");
     let { status, data } = await axios({
       method: "put",
       url: `${url}/user-api/change-pass`,

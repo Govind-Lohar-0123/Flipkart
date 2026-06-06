@@ -6,7 +6,7 @@ import { Box, Typography, List, ListItem, Link } from "@mui/material";
 
 import Badge from "@mui/material/Badge";
 import { Link as routerLink } from "react-router-dom";
-import { getCookie } from "../auth/cookieAction";
+import { getCookie, getUser } from "../auth/cookieAction";
 import { useSelector, useDispatch } from "react-redux";
 import UserIcon from "@mui/icons-material/AccountCircleOutlined";
 import { getAllCarts } from "../../react_redux/redux/actions/cartAction";
@@ -96,7 +96,7 @@ const LoginStyle = styled(Box)(({ theme }) => ({
   width: "100px",
 }));
 
-let user = JSON.parse(getCookie("user"));
+let user =getUser("user");
 
 export default function CustomeButton1() {
   const dispatch = useDispatch();

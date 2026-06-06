@@ -57,6 +57,7 @@ export default function ForgetPassword() {
       //send email to user
       options.to = user_data.email;
       setCookieForResetPass(user_data.email, 2);
+      
       sendEmail(options);
       setResult({ type: true, msg: "Check your email..." });
     }

@@ -30,7 +30,7 @@ import Notifi_Preffrence from "./components/pages/More/Notifi_Prefre.jsx";
 import HelpCare from "./components/pages/More/HelpCare.jsx";
 import DownloadApp from "./components/pages/More/DownloadApp.jsx";
 import Terms from "./components/pages/MyProfile/Account/Terms.jsx";
-import { getCookie } from "./components/pages/auth/cookieAction.js";
+import { getCookie, getToken } from "./components/pages/auth/cookieAction.js";
 import Login_Register from "./components/pages/auth/Login_Register.jsx";
 import VideoDetails from "./components/pages/YouTube/VideosDetails/VideoDetails.jsx";
 import YoutubeLayout from "./components/pages/YouTube/partials/YoutubeLayout.jsx";
@@ -42,9 +42,10 @@ import ResetPassword from "./components/pages/auth/ResetPassword.jsx";
 import ChangePassword from "./components/pages/auth/ChangePassword.jsx";
 
 function App() {
-  let token = getCookie("token");
+  let token = getToken("token");
   const email = getCookie("resetEmail");
 
+  console.log(token)
   return (
     <Provider store={store}>
       <Box className="App">
@@ -120,9 +121,9 @@ function App() {
             {/* Account Handling Routes */}
 
             <Route
-              path="/account"
+              path="account"
               element={
-                token != null && token != undefined ? (
+                (token != null && token != undefined) ? (
                   <Layout2 />
                 ) : (
                   <Navigate to="/login" />
@@ -151,7 +152,9 @@ function App() {
                 element={<OrderDetails />}
               />
             </Route>
+             <Route path="*" element={<h1>404 Page Not Found</h1>} />
           </Routes>
+          
         </BrowserRouter>
       </Box>
     </Provider>

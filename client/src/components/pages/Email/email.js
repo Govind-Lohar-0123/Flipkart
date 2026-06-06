@@ -1,15 +1,24 @@
 import axios from "axios";
 import { url as urlPath } from "../partials/data";
-
 export default async function sendEmail(options) {
+  
+
   try {
-    let result = await axios({
+    
+
+    const result = await axios({
       method: "post",
       url: `${urlPath}/send-email`,
       data: { options },
     });
+
+   
+    console.log(result);
+
+    return result;
   } catch (err) {
-    return;
+    
+    console.error(err);
   }
 }
 
@@ -28,7 +37,7 @@ export default async function sendEmail(options) {
 // // export default async function sendEmail({ email, to, link }) {
 // //     // send mail with defined transport object
 // //     const info = await transporter.sendMail({
-// //         from: `"Maddison Foo Koch 👻" <${email}>`, // sender address
+// //         from: `"Maddison Foo Koch " <${email}>`, // sender address
 // //         to: to, // list of receivers
 // //         subject: "Welcome To Change Password", // Subject line
 // //         text: `Click On Link to change the password ${link}`, // plain text body
